@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>All Cookie Orders</title>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='solar.css')}}"
+    />
+  </head>
+  <body>
+    <h1 class="text-center mt-3">All Cookie Orders</h1>
+    <div class="container d-flex justify-content-center mt-4">
+      <table class="table align-items">
+        <thead>
+          <tr>
+            <th scope="col">Name</th>
+            <th scope="col">Cookie Type</th>
+            <th scope="col"># Of Boxes</th>
+            <th class="col">Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for order in orders %}
+          <tr>
+            <td>{{ order.name }}</td>
+            <td>{{ order.cookie_type }}</td>
+            <td>{{ order.num_boxes }}</td>
+            <td>
+              <form action="/view_order/{{order.id}}">
+                <input type="hidden" name="id" value="{{ order.id }}" />
+                <input
+                  type="submit"
+                  class="btn btn-warning"
+                  value="Edit Order"
+                />
+              </form>
+            </td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+    <div class="d-flex justify-content-center mt-3">
+      <a href="/" class="btn btn-primary">Back To Create</a>
+    </div>
+  </body>
+</html>

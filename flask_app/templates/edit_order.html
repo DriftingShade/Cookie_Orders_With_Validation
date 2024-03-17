@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cookie Order Form</title>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='solar.css')}}"
+    />
+  </head>
+  <body>
+    <h1 class="text-center mt-3">Cookie Order Form</h1>
+    <div class="container d-flex justify-content-center mt-4">
+      <div class="card" style="width: 18rem">
+        <div class="card-body">
+          <h5 class="card-title text-center">Edit Cookie Order</h5>
+          <form action="/update_order" method="post">
+            <label for="name" class="form-label mt-3">Name</label>
+            <input type="hidden" name="id" value="{{ order.id }}" />
+            <input
+              type="text"
+              class="form-control"
+              name="name"
+              value="{{ order.name }}"
+            />
+            <label for="cookie_type" class="form-label mt-3"
+              >Type Of Cookies</label
+            >
+            <input
+              type="text"
+              class="form-control"
+              name="cookie_type"
+              value="{{ order.cookie_type }}"
+            />
+            <label for="num_boxes" class="form-label mt-3"
+              >Number Of Boxes</label
+            >
+            <input
+              type="number"
+              class="form-control"
+              name="num_boxes"
+              value="{{ order.num_boxes }}"
+            />
+
+            <div class="container d-flex justify-content-center">
+              <input
+                type="submit"
+                class="btn btn-primary mt-5"
+                value="Update Order"
+              />
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    <div class="d-flex justify-content-center">
+      <form action="/all_orders">
+        <input
+          type="submit"
+          class="btn btn-secondary mt-5"
+          value="View All Orders"
+        />
+      </form>
+    </div>
+  </body>
+</html>
