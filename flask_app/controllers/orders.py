@@ -24,6 +24,9 @@ def get_order(id):
 
 @app.post("/update_order")
 def update_order():
+    id = request.form["id"]
+    if not Order.validate_order(request.form):
+        return redirect(f"/view_order/{id}")
     Order.update(request.form)
     return redirect("/all_orders")
 

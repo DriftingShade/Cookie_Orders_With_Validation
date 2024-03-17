@@ -16,6 +16,13 @@
         <div class="card-body">
           <h5 class="card-title text-center">Edit Cookie Order</h5>
           <form action="/update_order" method="post">
+            {% with messages=get_flashed_messages() %} {% if messages %} {% for
+            message in messages %}
+            <ul class="list-group-item-danger">
+              {{ message }}
+            </ul>
+
+            {% endfor %} {% endif %} {% endwith %}
             <label for="name" class="form-label mt-3">Name</label>
             <input type="hidden" name="id" value="{{ order.id }}" />
             <input
